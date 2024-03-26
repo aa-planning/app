@@ -4,6 +4,8 @@ AA Planning App is under construction. We want a Task Planning integrated with L
 
 ## How to run
 
+Change env.test.example to .env.test
+
 ```bash
 docker compose up -d
 ```
