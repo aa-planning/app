@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspace:cached
+      - $HOME/.ssh/:/home/vscode/.ssh/
+    command: sleep infinity
+    env_file:
+      - ../.env.test
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:16.2
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    env_file:
+      - ../.env.test
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

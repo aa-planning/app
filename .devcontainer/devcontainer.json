@@ -1,0 +1,43 @@
+{
+  "name": "backend",
+  "dockerComposeFile": ["./docker-compose.extend.yml"],
+  "service": "api",
+  "workspaceFolder": "/workspace",
+  // devcontainer features
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {},
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/ruby:1": {
+      "version": "3.1.4"
+    },
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "username": "vscode",
+      "userUid": 1000,
+      "userGid": 1000,
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "configureZshAsDefaultShell": true,
+      "upgradePackages": true
+    },
+    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+      "username": "vscode",
+      "plugins": "bundler rails ruby"
+    }
+  },
+  "remoteEnv": {
+    "GIT_EDITOR": "code --wait"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Shopify.ruby-lsp",
+        "EditorConfig.EditorConfig",
+        "GitHub.github-vscode-theme"
+      ]
+    }
+  },
+  "initializeCommand": "pwd",
+  "postAttachCommand": ".devcontainer/boot.sh"
+}
