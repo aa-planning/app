@@ -38,6 +38,5 @@
       ]
     }
   },
-  "initializeCommand": "pwd",
   "postAttachCommand": ".devcontainer/boot.sh"
 }
