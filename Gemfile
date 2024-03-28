@@ -47,11 +47,6 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ]
-end
-
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
@@ -65,9 +60,35 @@ group :development do
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 end
 
+###############
+# utils
+###############
+gem 'dotenv-rails', group: [ :development, :test ]
 
 ###############
 # Test utils
 ###############
 gem 'rspec-rails', group: [ :development, :test ]
+gem 'simplecov', group: [ :test ]
+gem 'simplecov-cobertura', group: [ :test ]
+gem 'vcr', group: [ :development, :test ]
+gem 'webmock', group: [ :development, :test ]
+
+###############
+# Docs
+###############
+gem 'rswag-api', group: [ :development, :test ]
+gem 'rswag-ui', group: [ :development, :test ]
+gem 'rswag-specs', group: [ :development, :test ]
+
+###############
+# HTTP
+###############
+gem 'httparty'
+
+###############
+# Debugging
+###############
 gem 'rdbg', '~> 0.1.0', group: [ :development, :test ]
+gem 'pry', group: [ :development, :test ]
+gem 'debug', group: [ :development, :test ]

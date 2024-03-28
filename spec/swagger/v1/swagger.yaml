@@ -1,0 +1,19 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/issues":
+    get:
+      summary: Retrieves a list of issues
+      tags:
+      - Issues
+      responses:
+        '200':
+          description: Get issues from linear
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: aa-planning.dev/api

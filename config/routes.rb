@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
+
   namespace :api do
-    get 'issues/index'
+    resources :issues, only: [:index]
   end
 
   # React Application
