@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
 ruby "3.1.4"
@@ -39,7 +41,7 @@ gem "redis", ">= 4.0.1"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ windows jruby ]
+gem "tzinfo-data", platforms: [:windows, :jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -61,34 +63,56 @@ group :development do
 end
 
 ###############
+# Active Record
+###############
+gem "active_model_serializers"
+
+###############
 # utils
 ###############
-gem 'dotenv-rails', group: [ :development, :test ]
+gem "dotenv-rails", group: [:development, :test]
+
+###############
+# Code Quality
+###############
+gem "rubocop", require: false, group: [:development, :test]
+gem "rubocop-shopify", require: false, group: [:development, :test]
+gem "rubocop-rails", require: false, group: [:development, :test]
+gem "rubocop-rspec", require: false, group: [:development, :test]
 
 ###############
 # Test utils
 ###############
-gem 'rspec-rails', group: [ :development, :test ]
-gem 'simplecov', group: [ :test ]
-gem 'simplecov-cobertura', group: [ :test ]
-gem 'vcr', group: [ :development, :test ]
-gem 'webmock', group: [ :development, :test ]
+gem "rspec-rails", group: [:development, :test]
+gem "simplecov", group: [:test]
+gem "simplecov-cobertura", group: [:test]
+gem "vcr", group: [:development, :test]
+gem "webmock", group: [:development, :test]
+gem "faker", group: [:development, :test]
+gem "factory_bot_rails", group: [:development, :test]
 
 ###############
 # Docs
 ###############
-gem 'rswag-api', group: [ :development, :test ]
-gem 'rswag-ui', group: [ :development, :test ]
-gem 'rswag-specs', group: [ :development, :test ]
+gem "rswag-api", group: [:development, :test]
+gem "rswag-specs", group: [:development, :test]
+gem "rswag-ui", group: [:development, :test]
 
 ###############
 # HTTP
 ###############
-gem 'httparty'
+gem "httparty"
 
 ###############
 # Debugging
 ###############
-gem 'rdbg', '~> 0.1.0', group: [ :development, :test ]
-gem 'pry', group: [ :development, :test ]
-gem 'debug', group: [ :development, :test ]
+gem "debug", group: [:development, :test]
+gem "pry", group: [:development, :test]
+gem "rdbg", "~> 0.1.0", group: [:development, :test]
+
+###############
+# Authorization
+###############
+gem "devise"
+gem "devise-jwt"
+gem "rack-cors"

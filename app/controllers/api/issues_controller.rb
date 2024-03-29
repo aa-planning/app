@@ -1,13 +1,17 @@
-class Api::IssuesController < ApplicationController
-  before_action :load_issues
+# frozen_string_literal: true
 
-  def index
-    render json: { data: @issues }
-  end
+module Api
+  class IssuesController < ApplicationController
+    before_action :load_issues
 
-  private
+    def index
+      render(json: { data: @issues })
+    end
 
-  def load_issues
-    @issues = LinearLib.linear.issues
+    private
+
+    def load_issues
+      @issues = LinearLib.linear.issues
+    end
   end
 end
