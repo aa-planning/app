@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Api
-  class IssuesController < ApplicationController
+  class IssuesController < Api::ApiController
     before_action :load_issues
 
     def index

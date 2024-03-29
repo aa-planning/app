@@ -8,3 +8,7 @@ require:
 # It does not consider rswag
 RSpec/EmptyExampleGroup:
   Enabled: false
+
+# Ignore for headers
+RSpec/VariableName:
+  Enabled: false
