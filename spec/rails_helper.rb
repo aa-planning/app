@@ -71,4 +71,7 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.allow_http_connections_when_no_cassette = true
   config.ignore_hosts '127.0.0.1', 'localhost', 'searchkick'
+  config.filter_sensitive_data('<AUTH>') { |interaction|
+    interaction.request.headers['Authorization'][0]
+  }
 end
