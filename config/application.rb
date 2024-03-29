@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "boot"
 
 require "rails"
@@ -21,14 +23,15 @@ Bundler.require(*Rails.groups)
 module AaPlanningRails
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.1
+    config.load_defaults(7.1)
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w(tasks))
+    config.autoload_lib(ignore: ["tasks"])
     config.autoload_paths += Dir["#{config.root}/lib/assets/"]
     config.eager_load_paths += Dir["#{config.root}/lib/assets/"]
+    config.factory_bot.definition_file_paths = Dir["#{config.root}/spec/factories"]
 
     # Configuration for the application, engines, and railties goes here.
     #

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "active_support/core_ext/integer/time"
 
 # The test environment is used exclusively to run your application's
@@ -20,7 +22,7 @@ Rails.application.configure do
   # Configure public file server for tests with Cache-Control for performance.
   config.public_file_server.enabled = true
   config.public_file_server.headers = {
-    "Cache-Control" => "public, max-age=#{1.hour.to_i}"
+    "Cache-Control" => "public, max-age=#{1.hour.to_i}",
   }
 
   # Show full error reports and disable caching.
@@ -44,6 +46,9 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
+  # Mailer default url options
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
+
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
@@ -61,4 +66,7 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Raises error only in stdout, not html
+  config.logger = Logger.new(STDOUT)
 end

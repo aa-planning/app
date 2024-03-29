@@ -1,11 +1,13 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 # frozen_string_literal: true
 RSpec.configure do |config|
   # Specify a root folder where Swagger JSON files are generated
   # NOTE: If you're using the rswag-api to serve API descriptions, you'll need
   # to ensure that it's configured to serve Swagger from the same folder
-  config.openapi_root = Rails.root.to_s + '/spec/swagger'
+  config.openapi_root = Rails.root.to_s + "/spec/swagger"
 
   # Define one or more Swagger documents and provide global metadata for each one
   # When you run the 'rswag:specs:swaggerize' rake task, the complete Swagger will
@@ -14,24 +16,35 @@ RSpec.configure do |config|
   # document below. You can override this behavior by adding a openapi_spec tag to the
   # the root example_group in your specs, e.g. describe '...', openapi_spec: 'v2/swagger.json'
   config.openapi_specs = {
-    'v1/swagger.yaml' => {
-      openapi: '3.0.1',
+    "v1/swagger.yaml" => {
+      openapi: "3.0.1",
       info: {
-        title: 'API V1',
-        version: 'v1'
+        title: "API V1",
+        version: "v1",
+      },
+      components: {
+        schemas: {
+          user: {
+            type: :object,
+            properties: {
+              email: { type: :string },
+              password: { type: :string },
+            },
+          },
+        },
       },
       paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: "https://{defaultHost}",
           variables: {
             defaultHost: {
-              default: 'aa-planning.dev/api'
-            }
-          }
-        }
-      ]
-    }
+              default: "aa-planning.dev/api",
+            },
+          },
+        },
+      ],
+    },
   }
 
   # Specify the format of the output Swagger file when running 'rswag:specs:swaggerize'.

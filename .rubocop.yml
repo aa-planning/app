@@ -1,0 +1,14 @@
+inherit_gem:
+  rubocop-shopify: rubocop.yml
+
+require:
+  - rubocop-rspec
+  - rubocop-rails
+
+# It does not consider rswag
+RSpec/EmptyExampleGroup:
+  Enabled: false
+
+# Ignore for headers
+RSpec/VariableName:
+  Enabled: false
