@@ -31,7 +31,6 @@ module AaPlanningRails
     config.autoload_lib(ignore: ["tasks"])
     config.autoload_paths += Dir["#{config.root}/lib/assets/"]
     config.eager_load_paths += Dir["#{config.root}/lib/assets/"]
-    config.factory_bot.definition_file_paths = Dir["#{config.root}/spec/factories"]
 
     # Configuration for the application, engines, and railties goes here.
     #
