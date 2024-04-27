@@ -90,6 +90,7 @@ gem "vcr", group: [:development, :test]
 gem "webmock", group: [:development, :test]
 gem "faker", group: [:development, :test]
 gem "factory_bot_rails", group: [:development, :test]
+gem "factory_bot", group: [:development, :test]
 
 ###############
 # Docs
