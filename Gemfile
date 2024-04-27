@@ -95,9 +95,9 @@ gem "factory_bot", group: [:development, :test]
 ###############
 # Docs
 ###############
-gem "rswag-api", group: [:development, :test]
+gem 'rswag-api'
+gem 'rswag-ui'
 gem "rswag-specs", group: [:development, :test]
-gem "rswag-ui", group: [:development, :test]
 
 ###############
 # HTTP
