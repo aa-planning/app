@@ -3,8 +3,53 @@ openapi: 3.0.1
 info:
   title: API V1
   version: v1
+components:
+  schemas:
+    user:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
 paths:
-  "/api/issues":
+  "/auth/signup":
+    post:
+      summary: Create a new user
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: Create a valid user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  ref: "#/components/schemas/user"
+  "/auth/login":
+    post:
+      summary: Authenticate existent user
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: Login user created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  ref: "#/components/schemas/user"
+  "/issues":
     get:
       summary: Retrieves a list of issues
       tags:
@@ -12,6 +57,19 @@ paths:
       responses:
         '200':
           description: Get issues from linear
+  "/me":
+    get:
+      summary: Get logged user
+      tags:
+      - User
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Get logged user
 servers:
 - url: https://{defaultHost}
   variables:
